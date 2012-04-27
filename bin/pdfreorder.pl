@@ -39,10 +39,11 @@ my $total = $odd->pages() + $even->pages();
 die "$0: Arquivos $evenfile $oddfile contém número ímpar de páginas\n"
 	unless $total % 2 == 0;
 
-foreach ( 1 .. $total / 2 ) {
-    $new->importpage( $odd, $_ ) if $_ % 2 != 0;                  #Ímpar.
-    $new->importpage( $even, $_ + $total / 2 ) if $_ % 2 == 0;    #Par.
-
+my $i = 1;
+while ( $i =< $total / 2 ) {
+    $new->importpage( $odd, $i );
+    $new->importpage( $even, $i );
+    $i++;
 }
 
 $new->saveas("-");
