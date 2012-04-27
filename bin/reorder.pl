@@ -45,4 +45,4 @@ foreach ( 1 .. $total / 2 ) {
 
 }
 
-print $new;
+$new->saveas("-");
