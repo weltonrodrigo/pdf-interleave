@@ -49,14 +49,14 @@ die "$0: Arquivos $evenfile $oddfile contém número ímpar de páginas\n"
 my $i = 1;
 while ( $i <= $total / 2 ) {
     $new->importpage( $odd, $i );
-    if ( defined $norevert ) {
+    if ( not defined $norevert ) {
 		# Descartar a última página do conjunto par (normalmente em branco).
-		next if not defined $keeplast and $even->pages() - $i == 0;
+		last if not defined $keeplast and $even->pages() - $i == 0;
 		# Mesclar o segundo arquivo na ordem reversa.
         $new->importpage( $even, $even->pages() + 1 - $i );
     }
     else {
-		next if not defined $keeplast and $even->pages() == $i;
+		last if not defined $keeplast and $even->pages() == $i;
         $new->importpage( $even, $i );
     }
     $i++;
