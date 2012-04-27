@@ -37,10 +37,6 @@ GetOptions(
     "l"   => \$keeplast,
 );
 
-die "$0: São precisos dois arquivos,  primeiro as ímpares, depois as pares\n"
-	unless @ARGV >= 2;
-
-
 my $new  = PDF::API2->new();
 my $odd  = PDF::API2->open($oddfile);
 my $even = PDF::API2->open($evenfile);
