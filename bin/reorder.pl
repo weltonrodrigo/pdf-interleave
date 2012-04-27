@@ -24,19 +24,24 @@ use warnings;
 use PDF::API2;
 use Data::Dumper;
 
-my $infile = shift;
+die "$0: São precisos dois arquivos,  primeiro as ímpares, depois as pares\n"
+	unless @ARGV == 2;
+
+my $oddfile  = shift;
+my $evenfile = shift;
 
 my $new  = PDF::API2->new();
-my $pdf = PDF::API2->open($infile);
+my $odd  = PDF::API2->open($oddfile);
+my $even = PDF::API2->open($evenfile);
 
-my $total = $pdf->pages();
+my $total = $odd->pages() + $even->pages();
 
-die "$0: Arquivo $infile contém número ímpar de páginas\n"
+die "$0: Arquivos $evenfile $oddfile contém número ímpar de páginas\n"
 	unless $total % 2 == 0;
 
-foreach(1..$total/2){
-	$new->importpage($pdf, $_			   ) if $_ % 2 != 0; #Ímpar.
-	$new->importpage($pdf, $_ + $total / 2 ) if $_ % 2 == 0; #Par.
+foreach ( 1 .. $total / 2 ) {
+    $new->importpage( $odd, $_ ) if $_ % 2 != 0;                  #Ímpar.
+    $new->importpage( $even, $_ + $total / 2 ) if $_ % 2 == 0;    #Par.
 
 }
 
