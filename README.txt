@@ -1,8 +1,11 @@
-Este script recebe como entrada dois arquivos PDF e intercala suas páginas num só.
+PDF INTERLEAVING.
 
-Muito útil se você precisa escanear documentos frente e verso, mas seu alimentador
-automático não suporta.
+This script takes two PDF files as arguments and outputs the first in-
+terleaved with the second.
 
-Primeiro escaneie as páginas ímpares e depois as pares então, rode:
+This may be useful if you have several two-sided documents to scan and
+a single-sided Automatic Document Feeder Scanner.
 
-pdfreorder.pl ímpares.pdf pares.pdf > todas.pdf
+Just scan all odd pages to a file and all even ones to another. Then:
+
+pdfinterleave.pl oddpages.pdf evenpages.pdf > fulldocument.pdf
