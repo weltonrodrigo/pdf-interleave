@@ -1,18 +1,18 @@
 #!/usr/bin/perl 
 #===============================================================================
 #
-#         FILE: reorder.pl
+#         FILE: pdfinterleave.pl
 #
-#        USAGE: ./reorder.pl  
+#        USAGE: ./pdfinterleave.pl oddpages.pdf evenpages.pdf
 #
 #  DESCRIPTION: Reorganiza arquivos PDF frente e verso que foram escaneados um 
-#  				lado de cada vez.
+#  		lado de cada vez.
 #
 #      OPTIONS: ---
 # REQUIREMENTS: ---
 #         BUGS: ---
 #        NOTES: ---
-#       AUTHOR: WELTON RODRIGO TORRES NASCIMENTO (), 
+#       AUTHOR: WELTON RODRIGO TORRES NASCIMENTO (rodrigo@familianascimento.org), 
 # ORGANIZATION: 
 #      VERSION: 1.0
 #      CREATED: 27-04-2012 14:22:51
