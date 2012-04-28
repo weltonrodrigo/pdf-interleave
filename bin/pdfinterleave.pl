@@ -28,11 +28,11 @@ use Getopt::Long;
 my $oddfile;
 my $evenfile;
 my $norevert;
-my $keeplast;
+my $discardlast;
 
 GetOptions(
     "r"   => \$norevert,
-    "l"   => \$keeplast,
+    "l"   => \$discardlast,
 );
 
 my $new  = PDF::API2->new();
@@ -49,12 +49,12 @@ while ( $i <= $total / 2 ) {
     $new->importpage( $odd, $i );
     if ( not defined $norevert ) {
 		# Descartar a última página do conjunto par (normalmente em branco).
-		last if not defined $keeplast and $even->pages() - $i == 0;
+		last if defined $discardlast and $even->pages() - $i == 0;
 		# Mesclar o segundo arquivo na ordem reversa.
         $new->importpage( $even, $even->pages() + 1 - $i );
     }
     else {
-		last if not defined $keeplast and $even->pages() == $i;
+		last if defined $discardlast and $even->pages() == $i;
         $new->importpage( $even, $i );
     }
     $i++;
