@@ -31,15 +31,13 @@ my $norevert;
 my $keeplast;
 
 GetOptions(
-    "i=s" => \$oddfile,
-    "p=s" => \$evenfile,
     "r"   => \$norevert,
     "l"   => \$keeplast,
 );
 
 my $new  = PDF::API2->new();
-my $odd  = PDF::API2->open($oddfile);
-my $even = PDF::API2->open($evenfile);
+my $odd  = PDF::API2->open(shift);
+my $even = PDF::API2->open(shift);
 
 my $total = $odd->pages() + $even->pages();
 
